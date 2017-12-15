@@ -1,7 +1,10 @@
 <?xml version='1.0'?>
-<robot name = "my_robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name = "my_robot">
+ <xacro:include filename="$(find my_robot)/src/urdf/hokuyo_utm30lx.urdf.xacro"/>
+
+
         <link name='chassis'>
-            <!--origin xyz="0 0 0.1" rpy="0 0 0"/-->
+            <pose xyz="0 0 0.1" rpy="0 0 0"/>
 
             <visual name='visual'>
               <geometry>
@@ -9,80 +12,97 @@
               </geometry>
             </visual>
 
-            <collision>
+           <collision name='collision'>
               <geometry>
                 <box size= "0.4 0.2 0.1"/>
               </geometry>
             </collision>
 
             <visual name='caster_visual'>
-             <!--origin xyz="-0.15 0 -0.05" rpy="0 0 0"/-->
+             <pose xyz="-0.15 0 -0.05" rpy="0 0 0"/>
               <geometry>
-               <sphere radius="0.05">
+               <sphere radius="0.05"/>
               </geometry>
             </visual>
 
-            <collision>
-             <!--origin xyz="-0.15 0 -0.05" rpy="0 0 0"/-->
+          <collision name='caster_collision'>
+             <pose>-0.15 0 -0.05 0 0 0</pose>
               <geometry>
-               <sphere radius="0.05">
+               <sphere radius="0.05"/>
               </geometry>
+
+             <surface>
+              <friction>
+               <ode>
+                <mu>0</mu>
+                <mu2>0</mu2>
+                <slip1>1.0</slip1>
+                <slip2>1.0</slip2>
+               </ode>
+              </friction>
+             </surface>
+
             </collision>
 
         </link>
         <link name="left_wheel">
-         <!--origin xyz="0.1 0.13 0.1" rpy="0 1.5707 1.5707"/-->
+         <pose xyz="0.1 0.13 0.1" rpy="0 1.5707 1.5707"/>
 
           <visual name="visual">
            <geometry>
-            <cylinder radius="0.1" length="0.05">           
+            <cylinder radius="0.1" length="0.05"/>           
            </geometry>
           </visual>
                     
           <collision>
            <geometry>
-            <cylinder radius="0.1" length="0.05">
+            <cylinder radius="0.1" length="0.05"/>
            </geometry>
           </collision>
           
         </link>
         <link name="right_wheel">
-         <!--origin xyz="0.1 -0.13 0.1" rpy="0 1.5707 1.5707"/-->
+         <pose xyz="0.1 -0.13 0.1" rpy="0 1.5707 1.5707"/>
 
           <visual name="visual">
            <geometry>
-            <cylinder radius="0.1" length="0.05">
+            <cylinder radius="0.1" length="0.05"/>
            </geometry>
           </visual>
 
           <collision>
            <geometry>
-            <cylinder radius="0.1" length="0.05">
+            <cylinder radius="0.1" length="0.05"/>
            </geometry>
           </collision>
         </link>
     
-        <joint type="revolute" name="left_wheel_hinge">
+        <joint name="left_wheel_hinge" type="revolute">
           <child>left_wheel</child>
           <parent>chassis</parent>
           <axis xyz="0 1 0"/>
-          <!--origin xyz="0 0 -0.03" rpy="0 0 0"/-->
+          <pose xyz="0 0 -0.03" rpy="0 0 0"/>
         </joint>
 
-        <joint type="revolute" name="right_wheel_hinge">
+        <joint name="right_wheel_hinge" type="revolute" >
           <child>right_wheel</child>
           <parent>chassis</parent>
           <axis xyz="0 1 0"/>
-          <!--origin xyz="0 0 0.03" rpy="0 0 0"/-->
+          <pose xyz="0 0 0.03" rpy="0 0 0"/>
         </joint>
-    
-        <include>
+  
+<hokuyo_utm30lx_model name="hokuyo_laser" parent="base_link">
+    <origin xyz="0.2 0 0.2" rpy="0 0 0" />
+  </hokuyo_utm30lx_model>
+
+        
+        <!--include>
          <uri>model://hokuyo</uri>
           <pose>0.2 0 0.2 0 0 0</pose>
-        </include>
+        </include-->
     
         <joint name="hokuyo_joint" type="revolute">
-         <child>hokuyo::link</child>
+         <child>hokuyo_laser</child>
          <parent>chassis</parent>
          <axis xyz="0 0 1"/>
            <limit>
@@ -90,4 +110,5 @@
              <lower>0</lower>
            </limit>
         </joint>
+
 </robot>
