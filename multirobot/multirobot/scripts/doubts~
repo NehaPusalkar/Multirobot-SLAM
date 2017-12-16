@@ -1,0 +1,8 @@
+
+
+1) From where do we get the incidence matrix?
+   All vertex elements are initialized with angles of edges at vertex in initialization step
+
+2) How to decide number of updates?
+
+3) How do updates occur simultaneously for all robots
