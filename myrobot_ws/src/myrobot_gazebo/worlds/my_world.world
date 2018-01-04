@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<sdf version="1.4">
+  <world name="default">
+
+    <include>
+      <uri>model://my_world</uri>
+    </include>
+
+  </world>
+</sdf>

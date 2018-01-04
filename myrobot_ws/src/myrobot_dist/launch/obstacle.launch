@@ -1,0 +1,7 @@
+<launch>
+ <node pkg = "myrobot_dist" type = "code.py" name = "check_obstacle" output = "screen">
+
+
+ </node>
+
+</launch>

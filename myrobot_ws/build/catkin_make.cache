@@ -1,0 +1,2 @@
+myrobot_control:myrobot_description:myrobot_gazebo:myrobot_teleop:robot_setup_tf
+-DCATKIN_DEVEL_PREFIX=/home/ecslab1/myrobot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ecslab1/myrobot_ws/install -G Unix Makefiles

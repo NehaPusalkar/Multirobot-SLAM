@@ -1,0 +1,224 @@
+<?xml version="1.0" ?>
+<sdf version='1.4'>
+  <model name='my_robot'>
+    <link name='chassis'>
+      <pose>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>1.5e-07 0 0.1 0 -0 0</pose>
+        <mass>10</mass>
+        <inertia>
+          <ixx>0.500001</ixx>
+          <ixy>0</ixy>
+          <ixz>-2.64698e-23</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>0.100001</izz>
+        </inertia>
+      </inertial>
+      <collision name='chassis_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.4 0.2 0.1</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='chassis_collision_chassis_1'>
+        <pose>-0.15 0 -0.05 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='chassis_collision_hokuyo'>
+        <pose>0.15 0 0.1 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.1</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='chassis_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.4 0.2 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='chassis_visual_chassis_1'>
+        <pose>-0.15 0 -0.05 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>__default__</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='chassis_visual_hokuyo'>
+        <pose>0.15 0 0.1 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://myrobot_description/meshes/hokuyo_utm30lx/hokuyo_utm_30lx.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <self_collide>0</self_collide>
+    </link>
+    <link name='left_wheel'>
+      <pose>0.1 0.125 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 1.5707 1.5707</pose>
+        <mass>5</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_collision'>
+        <pose>0 0 0 0 1.5707 1.5707</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_visual'>
+        <pose>0 0 0 0 1.5707 1.5707</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='left_wheel_hinge' type='revolute'>
+      <child>left_wheel</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <link name='right_wheel'>
+      <pose>0.1 -0.125 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 1.5707 1.5707</pose>
+        <mass>5</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_collision'>
+        <pose>0 0 0 0 1.5707 1.5707</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_visual'>
+        <pose>0 0 0 0 1.5707 1.5707</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <joint name='right_wheel_hinge' type='revolute'>
+      <child>right_wheel</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics/>
+      </axis>
+    </joint>
+    <static>0</static>
+    <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+      <legacyMode>false</legacyMode>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>20</updateRate>
+      <leftJoint>left_wheel_hinge</leftJoint>
+      <rightJoint>right_wheel_hinge</rightJoint>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.1</wheelDiameter>
+      <torque>20</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>chassis</robotBaseFrame>
+    </plugin>
+  </model>
+</sdf>

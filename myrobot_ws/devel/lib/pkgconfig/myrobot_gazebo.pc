@@ -1,0 +1,8 @@
+prefix=/home/ecslab1/myrobot_ws/devel
+
+Name: myrobot_gazebo
+Description: Description of myrobot_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ecslab1/myrobot_ws/devel/lib 
+Requires: 

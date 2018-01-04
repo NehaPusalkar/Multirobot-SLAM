@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ecslab1/myrobot_ws/devel/setup.sh
