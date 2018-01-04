@@ -1,0 +1,10 @@
+
+
+1) From where do we get the incidence matrix?
+   All vertex matrix elements are initialized with angles of edges at vertex in initialization step, But do we know the map earlier ..as in these angles?
+
+2) How to decide number of updates?
+
+3) How do updates occur simultaneously for all robots
+
+4) Algorithm 4 -- how to find shortest path? 
